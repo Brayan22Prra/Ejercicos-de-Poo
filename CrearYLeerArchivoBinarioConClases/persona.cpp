@@ -1,41 +1,41 @@
 #include "persona.h"
-#include <fstream>
+#include <string.h>
 
-Persona::Persona(char* nombre, int edad, float salario)
+Persona::Persona(char* nombre, int edad, float salario, int horasTrabajadas)
 {
     this->nombre = nombre;
     this->edad = edad;
     this->salario = salario;
+    this->horasTrabajadas = horasTrabajadas;
 }
 
-Persona::Persona(){}
-
-void Persona::leer()
+void Persona::setNombre(char *newNombre)
 {
-    ifstream archivo("persona.dat", ios::binary);
-
-    if(!archivo){
-        cout<<"Error de lectura de archivo: " <<endl;
-        exit(1);
-    }
-
-    strPersona p;
-
-    while(archivo.read((char*)&p, sizeof(strPersona))){
-        Persona unaPersona(p.nombre, p.edad, p.salario);
-        addPersona(unaPersona);
-    }
+    nombre = new char(strlen(newNombre));
+    strcpy(nombre, newNombre);
 }
 
-void Persona::addPersona(Persona p)
+char *Persona::getNombre() const
 {
-    this->personas.push_back(p);
+    return nombre;
 }
 
-void Persona::mostrar_datos()
+int Persona::getEdad() const
 {
-    cout<<"Mostrando datos " <<endl;
-    for(auto it = personas.begin(); it != personas.end(); ++it){
-        cout<<"Nombre " <<it->nombre <<" Edad " <<it->edad <<" Salario " <<it->salario <<endl;
-    }
+    return edad;
+}
+
+float Persona::getSalario() const
+{
+    return salario;
+}
+
+void Persona::setHorasTrabajadas(int newHorasTrabajadas)
+{
+    horasTrabajadas = newHorasTrabajadas;
+}
+
+int Persona::getHorasTrabajadas() const
+{
+    return horasTrabajadas;
 }

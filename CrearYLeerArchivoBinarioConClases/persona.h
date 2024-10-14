@@ -1,31 +1,25 @@
 #ifndef PERSONA_H
 #define PERSONA_H
-#include <vector>
 #include <iostream>
-using namespace std;
-
-struct strPersona{
-    char nombre[20];
-    int edad;
-    float salario;
-};
 
 class Persona
 {
 private:
+    //Lee-------------
     char* nombre;
     int edad;
     float salario;
-
-    vector<Persona> personas;
+    //Escribe--------------
+    int horasTrabajadas;
 
 public:
-    Persona(char* nombre, int edad, float salario);
-    Persona();
-    void leer();
-    void addPersona(Persona p);
-    void mostrar_datos();
-
+    Persona(char* nombre, int edad, float salario, int horasTrabajadas);
+    void setNombre(char *newNombre);
+    char *getNombre() const;
+    int getEdad() const;
+    float getSalario() const;
+    void setHorasTrabajadas(int newHorasTrabajadas);
+    int getHorasTrabajadas() const;
 };
 
 #endif // PERSONA_H

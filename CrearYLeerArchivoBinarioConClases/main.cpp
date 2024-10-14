@@ -1,13 +1,17 @@
 #include <iostream>
 #include "persona.h"
+#include "gestorpersonas.h"
 
 using namespace std;
 
 int main()
 {
-    Persona *p1 = new Persona();
+    GestorPersonas *g1 = new GestorPersonas();
 
-    p1->leer();
-    p1->mostrar_datos();
+    g1->leer();
+    g1->mostrarDatos();
+    g1->setearHoras();
+    g1->grabar();
+    g1->grabarBin();
 
 }
